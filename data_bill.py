@@ -1,6 +1,6 @@
 # constant values are set here:
-TIER_1_DATA_LIMIT_GB = 10
-TIER_2_DATA_LIMIT_GB = 20
+TIER_2_DATA_LIMIT_GB = 10
+TIER_3_DATA_LIMIT_GB = 20
 PREMIUM_USER_OVERAGE_RATE_TIER_2 = 1
 REGULAR_USER_OVERAGE_RATE_TIER_2 = 2
 PREMIUM_USER_OVERAGE_RATE_TIER_3 = 2
@@ -33,8 +33,26 @@ user_premium_plan = input("Do you have premium plan? (yes or no): ")
 # bool
 has_premium = user_premium_plan in ('yes', 'Yes')
 
+# processing
 
-if has_premium:
-    print('ok')
-else:
-    print('nooo')
+# how many gb they are over tier 2
+overage_gb_tier_2 = data_used - TIER_2_DATA_LIMIT_GB
+# how many gb they are over tier 3
+overage_gb_tier_3 = data_used - TIER_3_DATA_LIMIT_GB
+
+# cost per gb tier 2
+Tier_2_over_cost = REGULAR_USER_OVERAGE_RATE_TIER_2 * overage_gb_tier_2
+ # cost per gb tier 3
+Tier_3_over_cost = REGULAR_USER_OVERAGE_RATE_TIER_3 * overage_gb_tier_3
+
+# overage_cost in tiers
+total_cost_over_tier_2 = 
+total_cost_over_tier_3 = 
+
+total_premium_cost_over_tier_2 = 
+total_premium_cost_over_tier_3 = 
+
+# regular tier 2
+if data_used >= TIER_2_DATA_LIMIT_GB:
+    print("you are within your data limit")
+    print("GB over limit: " )
