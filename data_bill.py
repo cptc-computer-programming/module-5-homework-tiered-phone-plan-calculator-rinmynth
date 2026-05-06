@@ -30,7 +30,7 @@ data_used = float(input("Enter your data usage (in GB): "))
 monthly_plan_cost = float(input("Enter your monthly plan cost: "))
 user_premium_plan = input("Do you have premium plan? (yes or no): ")
 
-# bool
+# bool 
 has_premium = user_premium_plan in ('yes', 'Yes')
 
 # processing
@@ -40,19 +40,28 @@ overage_gb_tier_2 = data_used - TIER_2_DATA_LIMIT_GB
 # how many gb they are over tier 3
 overage_gb_tier_3 = data_used - TIER_3_DATA_LIMIT_GB
 
+'''regular user over cost'''
 # cost per gb tier 2
 Tier_2_over_cost = REGULAR_USER_OVERAGE_RATE_TIER_2 * overage_gb_tier_2
  # cost per gb tier 3
 Tier_3_over_cost = REGULAR_USER_OVERAGE_RATE_TIER_3 * overage_gb_tier_3
 
-# overage_cost in tiers
-total_cost_over_tier_2 = 
-total_cost_over_tier_3 = 
+'''premium user over cost'''
+# cost per gb tier 2
+Tier_2_premium_over_cost = PREMIUM_USER_OVERAGE_RATE_TIER_2 * overage_gb_tier_2
+ # cost per gb tier 3
+Tier_3_premium_over_cost = PREMIUM_USER_OVERAGE_RATE_TIER_3 * overage_gb_tier_3
 
-total_premium_cost_over_tier_2 = 
-total_premium_cost_over_tier_3 = 
+
+'''total bill'''
+total_cost_over_tier_2 = monthly_plan_cost + Tier_2_over_cost
+total_cost_over_tier_3 = monthly_plan_cost + Tier_3_over_cost
+
+total_premium_cost_over_tier_2 = monthly_plan_cost + Tier_2_premium_over_cost
+total_premium_cost_over_tier_3 = monthly_plan_cost + Tier_3_premium_over_cost
 
 # regular tier 2
 if data_used >= TIER_2_DATA_LIMIT_GB:
     print("you are within your data limit")
-    print("GB over limit: " )
+    print("GB over limit: " + str(overage_gb_tier_2))
+    print("total bill: " + str(total_cost_over_tier_2))
