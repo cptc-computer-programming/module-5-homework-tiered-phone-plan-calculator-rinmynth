@@ -65,22 +65,30 @@ total_cost_over_tier_3 = monthly_plan_cost + Tier_3_over_cost
 total_premium_cost_over_tier_2 = monthly_plan_cost + Tier_2_premium_over_cost
 total_premium_cost_over_tier_3 = monthly_plan_cost + Tier_3_premium_over_cost
 
+
 # no overage cost 
 if data_used <= TIER_2_DATA_LIMIT_GB and not has_premium or has_premium:
-    print("\nyou are within your data limit (tier 2)")
+    print("\nyou are within your data limit ")
     print("GB over limit: " + str(no_gb_over))
-    print("overage cost: " + str(no_overage_cost))
+    print("overage cost: $" + str(no_overage_cost))
     print("total bill: " + str(regular_total_bill))
 # tier 2 overage cost for non premium 
 elif data_used > 10 and data_used <= 20 and not has_premium:
     print("\nyou are " + str(overage_gb_tier_2) + " GB over your limit (Regular tier 2)")       
-    print("overage cost: " + str(Tier_2_over_cost))
+    print("overage cost: $" + str(Tier_2_over_cost))
     print("total bill: " + str(total_cost_over_tier_2))
 # tier 2 overage cost for premium     
     if data_used > 10 and data_used <= 20 and has_premium:
         print("\nyou are " + str(overage_gb_tier_2) + " GB over your limit (Premium tier 2)")       
-        print("overage cost: " + str(Tier_2_premium_over_cost))
+        print("overage cost: $" + str(Tier_2_premium_over_cost))
         print("total bill: " + str(total_premium_cost_over_tier_2))
-
-
-
+# tier 3 overage cost for non premium
+elif data_used > TIER_3_DATA_LIMIT_GB and not has_premium:
+     print("\nyou are " + str(overage_gb_tier_3) + " GB over your limit (Premium tier 3)")       
+     print("overage cost: $" + str(Tier_3_over_cost))
+     print("total bill: " + str(total_cost_over_tier_3))
+#tier 3 overage cost for premium
+else: 
+    print("\nyou are " + str(overage_gb_tier_3) + " GB over your limit (Premium tier 3)")       
+    print("overage cost: $" + str(Tier_3_premium_over_cost))
+    print("total bill: " + str(total_premium_cost_over_tier_3))
